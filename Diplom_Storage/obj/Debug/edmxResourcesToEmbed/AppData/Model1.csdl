@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiplomNikiforovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BRAK">
+    <Key>
+      <PropertyRef Name="ID_BRAK" />
+    </Key>
+    <Property Name="ID_BRAK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_ID" Type="Int32" Nullable="false" />
+    <Property Name="quanity" Type="Int32" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="USER_ID" Type="Int32" Nullable="false" />
+    <Property Name="DataOtgruz" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_BRAK_Product" FromRole="BRAK" ToRole="Product" />
+    <Property Name="Status_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Status" Relationship="DiplomNikiforovModel.FK_BRAK_Status" FromRole="BRAK" ToRole="Status" />
+    <NavigationProperty Name="users" Relationship="DiplomNikiforovModel.FK_BRAK_users" FromRole="BRAK" ToRole="users" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID_Catregory" />
+    </Key>
+    <Property Name="ID_Catregory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+    <Property Name="MinimalKolvoId" Type="Int32" />
+    <NavigationProperty Name="MinimalKolvo" Relationship="DiplomNikiforovModel.FK_Category_MinimalKolvo" FromRole="Category" ToRole="MinimalKolvo" />
+  </EntityType>
+  <EntityType Name="MinimalKolvo">
+    <Key>
+      <PropertyRef Name="ID_Minimal" />
+    </Key>
+    <Property Name="ID_Minimal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kol_vo" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="DiplomNikiforovModel.FK_Category_MinimalKolvo" FromRole="MinimalKolvo" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Priem">
+    <Key>
+      <PropertyRef Name="ID_Priem" />
+    </Key>
+    <Property Name="ID_Priem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_ID" Type="Int32" Nullable="false" />
+    <Property Name="KolVo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Priem_Product" FromRole="Priem" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID_PROD" />
+    </Key>
+    <Property Name="ID_PROD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Seria_ID" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Supp_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BRAK" Relationship="Self.FK_BRAK_Product" FromRole="Product" ToRole="BRAK" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Priem" Relationship="Self.FK_Priem_Product" FromRole="Product" ToRole="Priem" />
+    <NavigationProperty Name="Seria" Relationship="Self.FK_Product_Seria" FromRole="Product" ToRole="Seria" />
+    <NavigationProperty Name="SUPP" Relationship="Self.FK_Product_SUPP" FromRole="Product" ToRole="SUPP" />
+    <NavigationProperty Name="SKLAD" Relationship="Self.FK_SKLAD_Product" FromRole="Product" ToRole="SKLAD" />
+    <NavigationProperty Name="stock_operations" Relationship="Self.FK_stock_operations_Product" FromRole="Product" ToRole="stock_operations" />
+    <NavigationProperty Name="Zakaz" Relationship="Self.FK_Zakaz_Product" FromRole="Product" ToRole="Zakaz" />
+  </EntityType>
+  <EntityType Name="Revision">
+    <Key>
+      <PropertyRef Name="ID_REVISION" />
+    </Key>
+    <Property Name="ID_REVISION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="users" Relationship="Self.FK_Revision_users" FromRole="Revision" ToRole="users" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="ID_ROLE" />
+    </Key>
+    <Property Name="ID_ROLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="users" Relationship="Self.FK_users_roles" FromRole="roles" ToRole="users" />
+  </EntityType>
+  <EntityType Name="Seria">
+    <Key>
+      <PropertyRef Name="ID_SERIA" />
+    </Key>
+    <Property Name="ID_SERIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Seria" FromRole="Seria" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="ID_Session" />
+    </Key>
+    <Property Name="ID_Session" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Users_ID" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Precision="7" />
+    <Property Name="EndTime" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="users" Relationship="Self.FK_Session_users" FromRole="Session" ToRole="users" />
+  </EntityType>
+  <EntityType Name="SKLAD">
+    <Key>
+      <PropertyRef Name="ID_SKLAD" />
+    </Key>
+    <Property Name="ID_SKLAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_ID" Type="Int32" Nullable="false" />
+    <Property Name="Kolvo" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_SKLAD_Product" FromRole="SKLAD" ToRole="Product" />
+    <Property Name="Status_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Status" Relationship="DiplomNikiforovModel.FK_SKLAD_Status" FromRole="SKLAD" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="stock_operation_types">
+    <Key>
+      <PropertyRef Name="ID_OPTYPE" />
+    </Key>
+    <Property Name="ID_OPTYPE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="stock_operations" Relationship="Self.FK_stock_operations_stock_operation_types" FromRole="stock_operation_types" ToRole="stock_operations" />
+  </EntityType>
+  <EntityType Name="stock_operations">
+    <Key>
+      <PropertyRef Name="ID_STOKOP" />
+    </Key>
+    <Property Name="ID_STOKOP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="operation_date" Type="DateTime" Precision="0" />
+    <Property Name="operation_type_ID" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_stock_operations_Product" FromRole="stock_operations" ToRole="Product" />
+    <NavigationProperty Name="stock_operation_types" Relationship="Self.FK_stock_operations_stock_operation_types" FromRole="stock_operations" ToRole="stock_operation_types" />
+    <NavigationProperty Name="users" Relationship="Self.FK__stock_ope__user___4D94879B" FromRole="stock_operations" ToRole="users" />
+  </EntityType>
+  <EntityType Name="SUPP">
+    <Key>
+      <PropertyRef Name="ID_SUPP" />
+    </Key>
+    <Property Name="ID_SUPP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emeil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_SUPP" FromRole="SUPP" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user_form">
+    <Key>
+      <PropertyRef Name="ID_USFORM" />
+    </Key>
+    <Property Name="ID_USFORM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date_of_birth" Type="DateTime" Precision="0" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="User_ID" Type="Int32" />
+    <NavigationProperty Name="users" Relationship="Self.FK_user_form_users" FromRole="user_form" ToRole="users" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="ID_USERS" />
+    </Key>
+    <Property Name="ID_USERS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Revision" Relationship="Self.FK_Revision_users" FromRole="users" ToRole="Revision" />
+    <NavigationProperty Name="roles" Relationship="Self.FK_users_roles" FromRole="users" ToRole="roles" />
+    <NavigationProperty Name="Session" Relationship="Self.FK_Session_users" FromRole="users" ToRole="Session" />
+    <NavigationProperty Name="stock_operations" Relationship="Self.FK__stock_ope__user___4D94879B" FromRole="users" ToRole="stock_operations" />
+    <NavigationProperty Name="user_form" Relationship="Self.FK_user_form_users" FromRole="users" ToRole="user_form" />
+    <NavigationProperty Name="BRAK" Relationship="DiplomNikiforovModel.FK_BRAK_users" FromRole="users" ToRole="BRAK" />
+  </EntityType>
+  <EntityType Name="Zakaz">
+    <Key>
+      <PropertyRef Name="ID_Zakaz" />
+    </Key>
+    <Property Name="ID_Zakaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Kolvo" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Zakaz_Product" FromRole="Zakaz" ToRole="Product" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="Status1" Relationship="DiplomNikiforovModel.FK_Zakaz_Status" FromRole="Zakaz" ToRole="Status" />
+  </EntityType>
+  <Association Name="FK_BRAK_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="BRAK" Type="Self.BRAK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="BRAK">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID_Catregory" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Priem_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="Priem">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Seria">
+    <End Role="Seria" Type="Self.Seria" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seria">
+        <PropertyRef Name="ID_SERIA" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Seria_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_SUPP">
+    <End Role="SUPP" Type="Self.SUPP" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUPP">
+        <PropertyRef Name="ID_SUPP" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Supp_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SKLAD_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SKLAD" Type="Self.SKLAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="SKLAD">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stock_operations_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="stock_operations" Type="Self.stock_operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="stock_operations">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Revision_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="Revision" Type="Self.Revision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_USERS" />
+      </Principal>
+      <Dependent Role="Revision">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="ID_ROLE" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Session_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_USERS" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="Users_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stock_operations_stock_operation_types">
+    <End Role="stock_operation_types" Type="Self.stock_operation_types" Multiplicity="1" />
+    <End Role="stock_operations" Type="Self.stock_operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock_operation_types">
+        <PropertyRef Name="ID_OPTYPE" />
+      </Principal>
+      <Dependent Role="stock_operations">
+        <PropertyRef Name="operation_type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__stock_ope__user___4D94879B">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="stock_operations" Type="Self.stock_operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_USERS" />
+      </Principal>
+      <Dependent Role="stock_operations">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_form_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="user_form" Type="Self.user_form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_USERS" />
+      </Principal>
+      <Dependent Role="user_form">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DiplomNikiforovEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BRAK" EntityType="Self.BRAK" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="MinimalKolvo" EntityType="Self.MinimalKolvo" />
+    <EntitySet Name="Priem" EntityType="Self.Priem" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="Revision" EntityType="Self.Revision" />
+    <EntitySet Name="roles" EntityType="Self.roles" />
+    <EntitySet Name="Seria" EntityType="Self.Seria" />
+    <EntitySet Name="Session" EntityType="Self.Session" />
+    <EntitySet Name="SKLAD" EntityType="Self.SKLAD" />
+    <EntitySet Name="stock_operation_types" EntityType="Self.stock_operation_types" />
+    <EntitySet Name="stock_operations" EntityType="Self.stock_operations" />
+    <EntitySet Name="SUPP" EntityType="Self.SUPP" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="user_form" EntityType="Self.user_form" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <EntitySet Name="Zakaz" EntityType="Self.Zakaz" />
+    <AssociationSet Name="FK_BRAK_Product" Association="Self.FK_BRAK_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="BRAK" EntitySet="BRAK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Priem_Product" Association="Self.FK_Priem_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Priem" EntitySet="Priem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Seria" Association="Self.FK_Product_Seria">
+      <End Role="Seria" EntitySet="Seria" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_SUPP" Association="Self.FK_Product_SUPP">
+      <End Role="SUPP" EntitySet="SUPP" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SKLAD_Product" Association="Self.FK_SKLAD_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SKLAD" EntitySet="SKLAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stock_operations_Product" Association="Self.FK_stock_operations_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="stock_operations" EntitySet="stock_operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_Product" Association="Self.FK_Zakaz_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Zakaz" EntitySet="Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Revision_users" Association="Self.FK_Revision_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="Revision" EntitySet="Revision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_roles" Association="Self.FK_users_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Session_users" Association="Self.FK_Session_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="Session" EntitySet="Session" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stock_operations_stock_operation_types" Association="Self.FK_stock_operations_stock_operation_types">
+      <End Role="stock_operation_types" EntitySet="stock_operation_types" />
+      <End Role="stock_operations" EntitySet="stock_operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__stock_ope__user___4D94879B" Association="Self.FK__stock_ope__user___4D94879B">
+      <End Role="users" EntitySet="users" />
+      <End Role="stock_operations" EntitySet="stock_operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_form_users" Association="Self.FK_user_form_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="user_form" EntitySet="user_form" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DiplomNikiforovModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DiplomNikiforovModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Status" EntityType="DiplomNikiforovModel.Status" />
+    <AssociationSet Name="FK_SKLAD_Status" Association="DiplomNikiforovModel.FK_SKLAD_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="SKLAD" EntitySet="SKLAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BRAK_Status" Association="DiplomNikiforovModel.FK_BRAK_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="BRAK" EntitySet="BRAK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_MinimalKolvo" Association="DiplomNikiforovModel.FK_Category_MinimalKolvo">
+      <End Role="MinimalKolvo" EntitySet="MinimalKolvo" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BRAK_users" Association="DiplomNikiforovModel.FK_BRAK_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="BRAK" EntitySet="BRAK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_Status" Association="DiplomNikiforovModel.FK_Zakaz_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Zakaz" EntitySet="Zakaz" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="ID_STATUS" />
+    </Key>
+    <Property Name="ID_STATUS" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SKLAD" Relationship="DiplomNikiforovModel.FK_SKLAD_Status" FromRole="Status" ToRole="SKLAD" />
+    <NavigationProperty Name="BRAK" Relationship="DiplomNikiforovModel.FK_BRAK_Status" FromRole="Status" ToRole="BRAK" />
+    <NavigationProperty Name="Zakaz" Relationship="DiplomNikiforovModel.FK_Zakaz_Status" FromRole="Status" ToRole="Zakaz" />
+  </EntityType>
+  <Association Name="FK_SKLAD_Status">
+    <End Type="DiplomNikiforovModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="DiplomNikiforovModel.SKLAD" Role="SKLAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID_STATUS" />
+      </Principal>
+      <Dependent Role="SKLAD">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BRAK_Status">
+    <End Type="DiplomNikiforovModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="DiplomNikiforovModel.BRAK" Role="BRAK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID_STATUS" />
+      </Principal>
+      <Dependent Role="BRAK">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_MinimalKolvo">
+    <End Type="DiplomNikiforovModel.MinimalKolvo" Role="MinimalKolvo" Multiplicity="0..1" />
+    <End Type="DiplomNikiforovModel.Category" Role="Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MinimalKolvo">
+        <PropertyRef Name="ID_Minimal" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="MinimalKolvoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BRAK_users">
+    <End Type="DiplomNikiforovModel.users" Role="users" Multiplicity="1" />
+    <End Type="DiplomNikiforovModel.BRAK" Role="BRAK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_USERS" />
+      </Principal>
+      <Dependent Role="BRAK">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_Status">
+    <End Type="DiplomNikiforovModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="DiplomNikiforovModel.Zakaz" Role="Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID_STATUS" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

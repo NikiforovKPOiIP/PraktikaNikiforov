@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DiplomNikiforovModelContainer" CdmEntityContainer="DiplomNikiforovEntities">
+    <EntitySetMapping Name="BRAK">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.BRAK">
+        <MappingFragment StoreEntitySet="BRAK">
+          <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+          <ScalarProperty Name="ID_BRAK" ColumnName="ID_BRAK" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="quanity" ColumnName="quanity" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="DataOtgruz" ColumnName="DataOtgruz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="MinimalKolvoId" ColumnName="MinimalKolvoId" />
+          <ScalarProperty Name="ID_Catregory" ColumnName="ID_Catregory" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MinimalKolvo">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.MinimalKolvo">
+        <MappingFragment StoreEntitySet="MinimalKolvo">
+          <ScalarProperty Name="ID_Minimal" ColumnName="ID_Minimal" />
+          <ScalarProperty Name="Kol_vo" ColumnName="Kol-vo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Priem">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.Priem">
+        <MappingFragment StoreEntitySet="Priem">
+          <ScalarProperty Name="ID_Priem" ColumnName="ID_Priem" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="KolVo" ColumnName="KolVo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ID_PROD" ColumnName="ID_PROD" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seria_ID" ColumnName="Seria_ID" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Supp_ID" ColumnName="Supp_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Revision">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.Revision">
+        <MappingFragment StoreEntitySet="Revision">
+          <ScalarProperty Name="ID_REVISION" ColumnName="ID_REVISION" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="ID_ROLE" ColumnName="ID_ROLE" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seria">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.Seria">
+        <MappingFragment StoreEntitySet="Seria">
+          <ScalarProperty Name="ID_SERIA" ColumnName="ID_SERIA" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Session">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.Session">
+        <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="ID_Session" ColumnName="ID_Session" />
+          <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SKLAD">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.SKLAD">
+        <MappingFragment StoreEntitySet="SKLAD">
+          <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+          <ScalarProperty Name="ID_SKLAD" ColumnName="ID_SKLAD" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Kolvo" ColumnName="Kolvo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stock_operation_types">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.stock_operation_types">
+        <MappingFragment StoreEntitySet="stock_operation_types">
+          <ScalarProperty Name="ID_OPTYPE" ColumnName="ID_OPTYPE" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stock_operations">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.stock_operations">
+        <MappingFragment StoreEntitySet="stock_operations">
+          <ScalarProperty Name="ID_STOKOP" ColumnName="ID_STOKOP" />
+          <ScalarProperty Name="operation_date" ColumnName="operation_date" />
+          <ScalarProperty Name="operation_type_ID" ColumnName="operation_type_ID" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUPP">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.SUPP">
+        <MappingFragment StoreEntitySet="SUPP">
+          <ScalarProperty Name="ID_SUPP" ColumnName="ID_SUPP" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="emeil" ColumnName="emeil" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_form">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.user_form">
+        <MappingFragment StoreEntitySet="user_form">
+          <ScalarProperty Name="ID_USFORM" ColumnName="ID_USFORM" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="ID_USERS" ColumnName="ID_USERS" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zakaz">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.Zakaz">
+        <MappingFragment StoreEntitySet="Zakaz">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ID_Zakaz" ColumnName="ID_Zakaz" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Kolvo" ColumnName="Kolvo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище DiplomNikiforovModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище DiplomNikiforovModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище DiplomNikiforovModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище DiplomNikiforovModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DiplomNikiforovModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище DiplomNikiforovModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DiplomNikiforovModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище DiplomNikiforovModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище DiplomNikiforovModel.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="DiplomNikiforovModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID_STATUS" ColumnName="ID_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

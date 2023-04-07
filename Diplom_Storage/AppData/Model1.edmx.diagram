@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4f3a136b7554c5896bdd1d98e9207da" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="DiplomNikiforovModel.BRAK" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.Category" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.MinimalKolvo" Width="1.5" PointX="0.875" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.Priem" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.Product" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.Revision" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.roles" Width="1.5" PointX="3.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.Seria" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.Session" Width="1.5" PointX="8.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.SKLAD" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.stock_operation_types" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.stock_operations" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.SUPP" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.user_form" Width="1.5" PointX="8.25" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.users" Width="1.5" PointX="6" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.Zakaz" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_BRAK_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Priem_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Product_Seria" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Product_SUPP" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_SKLAD_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_stock_operations_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Zakaz_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Revision_users" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_users_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Session_users" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_stock_operations_stock_operation_types" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK__stock_ope__user___4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_user_form_users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DiplomNikiforovModel.Status" Width="1.5" PointX="8.625" PointY="3.25" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_SKLAD_Status" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_BRAK_Status" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Category_MinimalKolvo" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_BRAK_users" />
+        <AssociationConnector Association="DiplomNikiforovModel.FK_Zakaz_Status" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
